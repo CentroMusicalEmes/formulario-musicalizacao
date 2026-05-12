@@ -683,39 +683,45 @@ function resetForm() {
 </script>
 </body>
 <form id="formInscricao">
-  <input type="text" id="nome" placeholder="Seu nome" required>
-  <input type="email" id="email" placeholder="Seu email" required>
-  <input type="tel" id="telefone" placeholder="Seu telefone" required>
+  <input type="text" id="nome" placeholder="Nome completo" required>
+  <input type="email" id="email" placeholder="E-mail" required>
+  <input type="tel" id="telefone" placeholder="WhatsApp" required>
   
-  <button type="submit">Enviar e falar no WhatsApp</button>
+  <select id="curso">
+      <option value="">Selecione o curso</option>
+      <option>Musicalização Infantil</option>
+      <option>Teclado</option>
+      <option>Violão</option>
+      <option>Canto</option>
+  </select>
+  
+  <textarea id="duvidas" placeholder="Alguma dúvida?"></textarea>
+  
+  <button type="submit">Enviar via WhatsApp</button>
 </form>
 
 <script>
-  // Substitua pelo seu número (com DDD, sem espaços)
-  const NUMERO_WHATSAPP = '5531991928356'; // Exemplo: 55 11 99999-9999
+  const NUMERO_WHATSAPP = '553125553273'; // Seu número aqui
   
   document.getElementById('formInscricao').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Pegar os valores do formulário
       const nome = document.getElementById('nome').value;
       const email = document.getElementById('email').value;
       const telefone = document.getElementById('telefone').value;
+      const curso = document.getElementById('curso').value;
+      const duvidas = document.getElementById('duvidas').value;
       
-      // Montar a mensagem
-      const mensagem = `*Nova Inscrição - Formemus Educacional*%0a%0a` +
-                       `*Nome:* ${encodeURIComponent(nome)}%0a` +
-                       `*Email:* ${encodeURIComponent(email)}%0a` +
-                       `*Telefone:* ${encodeURIComponent(telefone)}%0a%0a` +
-                       `*Interesse:* Curso de Musicalização`;
+      let mensagem = `*🎵 INSCRIÇÃO FORMEMUS EDUCACIONAL*%0a%0a`;
+      mensagem += `*👤 Nome:* ${encodeURIComponent(nome)}%0a`;
+      mensagem += `*📧 E-mail:* ${encodeURIComponent(email)}%0a`;
+      mensagem += `*📱 WhatsApp:* ${encodeURIComponent(telefone)}%0a`;
       
-      // Criar link do WhatsApp
-      const url = `https://wa.me/${5531991928356}?text=${mensagem}`;
+      if(curso) mensagem += `*📚 Curso:* ${encodeURIComponent(curso)}%0a`;
+      if(duvidas) mensagem += `*💬 Dúvidas:* ${encodeURIComponent(duvidas)}%0a`;
       
-      // Abrir WhatsApp
-      window.open(url, '_blank');
+      mensagem += `%0a*🔗 Site:* Formemus Educacional`;
       
-      // Opcional: limpar formulário
-      // this.reset();
+      window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, '_blank');
   });
 </script>
