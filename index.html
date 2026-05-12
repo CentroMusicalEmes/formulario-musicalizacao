@@ -682,46 +682,39 @@ function resetForm() {
 }
 </script>
 </body>
-<form id="formInscricao">
-  <input type="text" id="nome" placeholder="Nome completo" required>
-  <input type="email" id="email" placeholder="E-mail" required>
-  <input type="tel" id="telefone" placeholder="WhatsApp" required>
+<div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+  <button type="submit" style="
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  ">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.5 3.47 1.44 4.96L2 22l5.33-1.56c1.47.83 3.14 1.27 4.85 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92z"/>
+      </svg>
+      Enviar e falar no WhatsApp
+  </button>
   
-  <select id="curso">
-      <option value="">Selecione o curso</option>
-      <option>Musicalização Infantil</option>
-      <option>Teclado</option>
-      <option>Violão</option>
-      <option>Canto</option>
-  </select>
-  
-  <textarea id="duvidas" placeholder="Alguma dúvida?"></textarea>
-  
-  <button type="submit">Enviar via WhatsApp</button>
-</form>
-
-<script>
-  const NUMERO_WHATSAPP = '553125553273'; // Seu número aqui
-  
-  document.getElementById('formInscricao').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
-      const telefone = document.getElementById('telefone').value;
-      const curso = document.getElementById('curso').value;
-      const duvidas = document.getElementById('duvidas').value;
-      
-      let mensagem = `*🎵 INSCRIÇÃO FORMEMUS EDUCACIONAL*%0a%0a`;
-      mensagem += `*👤 Nome:* ${encodeURIComponent(nome)}%0a`;
-      mensagem += `*📧 E-mail:* ${encodeURIComponent(email)}%0a`;
-      mensagem += `*📱 WhatsApp:* ${encodeURIComponent(telefone)}%0a`;
-      
-      if(curso) mensagem += `*📚 Curso:* ${encodeURIComponent(curso)}%0a`;
-      if(duvidas) mensagem += `*💬 Dúvidas:* ${encodeURIComponent(duvidas)}%0a`;
-      
-      mensagem += `%0a*🔗 Site:* Formemus Educacional`;
-      
-      window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, '_blank');
-  });
-</script>
+  <a href="https://wa.me/5511999999999" target="_blank" style="
+      background-color: #075E54;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  ">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.5 3.47 1.44 4.96L2 22l5.33-1.56c1.47.83 3.14 1.27 4.85 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92z"/>
+      </svg>
+      Tirar dúvidas
+  </a>
+</div>
